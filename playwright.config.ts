@@ -1,6 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-import path from "path";
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 
 if (!process.env.NODE_ENV) {
   dotenv.config({ path: `${__dirname}//src//config//.env` });
@@ -18,7 +17,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
   use: {
-    baseURL: "https://login.salesforce.com",
+    baseURL:
+      "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
     trace: "on-first-retry",
   },
 

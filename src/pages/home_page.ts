@@ -1,26 +1,27 @@
-import { Page, expect } from "@playwright/test";
-import logger from "../utils/logger_utils";
-import ContactPage from "./contact_page";
+import { Page } from "playwright";
+import LeftMenuComponent from "./components/left_menu_component";
+import TopMenuComponent from "./components/top_menu_component";
 
-export default class HomePage {
-  constructor(private page: Page) {}
-
-  private readonly serviceText = this.page.locator('[title="Service"]');
-  private readonly contactsLinkLocator = "Contacts";
-
-  async getServiceTitle() {
-    return await this.serviceText.textContent();
+class HomePage {
+  /*
+        Home Page always contains: 
+            - Left menu component
+            - Top menu component
+    */
+  private leftMenuComponent: LeftMenuComponent;
+  private topMenuComponent: TopMenuComponent;
+  constructor(private readonly page: Page) {
+    this.leftMenuComponent = new LeftMenuComponent(page);
+    this.topMenuComponent = new TopMenuComponent(page);
   }
 
-  async navigateToContactTab() {
-    await expect(
-      this.page.getByRole("link", { name: this.contactsLinkLocator })
-    ).toBeVisible();
-    logger.info("Contacts Tab is visible");
-    await this.page
-      .getByRole("link", { name: this.contactsLinkLocator })
-      .click();
-    logger.info("Contacts Tab is clicked");
-    return new ContactPage(this.page);
+  getLeftMenuComponent() {
+    return this.leftMenuComponent;
+  }
+
+  getTopMenuComponent() {
+    return this.topMenuComponent;
   }
 }
+
+export default HomePage;

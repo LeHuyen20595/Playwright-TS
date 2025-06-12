@@ -1,25 +1,33 @@
-import { Page } from "@playwright/test";
-import HomePage from "./home_page";
-import logger from "../utils/logger_utils";
+import { expect } from "@playwright/test";
+import { Page } from "playwright";
 
-export default class LoginPage {
-  constructor(private page: Page) {}
+class LoginPage {
+  constructor(private readonly page: Page) {}
 
-  private readonly usernameTxt = this.page.locator("#username");
-  private readonly passwordTxt = this.page.locator("#password");
-  private readonly loginBnt = this.page.locator("#Login");
+  private readonly usernameTextbox = this.page.getByRole("textbox", {
+    name: "Username",
+  });
+  private readonly passwordTextbox = this.page.getByRole("textbox", {
+    name: "Password",
+  });
+  private readonly loginButton = this.page.getByRole("button", {
+    name: "Login",
+  });
 
-  async goto() {
+  async visit() {
     await this.page.goto("/");
+    await expect(
+      this.page.getByRole("img", { name: "orangehrm-logo" })
+    ).toBeVisible({
+      timeout: 20000,
+    });
   }
 
   async login(username: string, password: string) {
-    await this.usernameTxt.fill(username);
-    logger.info("Username filled");
-    await this.passwordTxt.fill(password);
-    logger.info("Password filled");
-    await this.loginBnt.click({ timeout: 60000 });
-    logger.info("Login clicked");
-    return new HomePage(this.page);
+    await this.usernameTextbox.fill(username);
+    await this.passwordTextbox.fill(password);
+    await this.loginButton.click();
   }
 }
+
+export default LoginPage;

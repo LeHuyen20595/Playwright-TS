@@ -1,4 +1,4 @@
 export default class Env {
-  public static readonly username = process.env.USERNAME!;
-  public static readonly password = process.env.PASSWORD!;
+  public static readonly USERNAME = process.env.USERNAME!;
+  public static readonly PASSWORD = process.env.PASSWORD!;
 }

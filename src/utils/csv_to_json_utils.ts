@@ -5,10 +5,10 @@ const csvToJson = (data, delimiter = ",") => {
   return data
     .slice(data.indexOf("\n") + 1)
     .split("\n")
-    .map((v) => {
+    .map((v: string) => {
       const values = v.split(delimiter);
       return titles.reduce(
-        (obj, title, index) => (
+        (obj: { [x: string]: string }, title: string, index: number) => (
           (obj[title.trim()] = values[index].trim()), obj
         ),
         {}
@@ -24,10 +24,9 @@ const srcDir = path.resolve(currentDir, "..");
 
 // Change to 'config' folder
 const testdataDir = path.resolve(srcDir, "testdata");
-const csvFilePath = `${testdataDir}`;
 export const convertCsvFileToJsonFile = (
-  csvFileName,
-  jsonFileName,
+  csvFileName: string,
+  jsonFileName: string,
   delimiter = ","
 ) => {
   try {
@@ -47,6 +46,10 @@ export const convertCsvFileToJsonFile = (
       `Conversion completed. JSON data written to: ${testdataDir}\\${jsonFileName}`
     );
   } catch (error) {
-    console.error("Error converting CSV to JSON:", error.message);
+    if (error instanceof Error) {
+      console.error("Error converting CSV to JSON:", error.message);
+    } else {
+      console.error("Error converting CSV to JSON:", error);
+    }
   }
 };
