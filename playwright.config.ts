@@ -1,4 +1,14 @@
 import { defineConfig, devices } from "@playwright/test";
+import path from "path";
+const dotenv = require("dotenv");
+
+if (!process.env.NODE_ENV) {
+  dotenv.config({ path: `${__dirname}//src//config//.env` });
+} else {
+  dotenv.config({
+    path: `${__dirname}//src//config//.env.${process.env.NODE_ENV}`,
+  });
+}
 
 export default defineConfig({
   testDir: "./src/tests",
