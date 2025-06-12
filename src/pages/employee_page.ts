@@ -1,5 +1,6 @@
 import { Page } from "playwright";
 import { EmployeeDetails } from "../testdata/orange_hr_interface";
+import logger from "../utils/logger_utils";
 
 class AddEmployeePage {
   constructor(private readonly page: Page) {}
@@ -21,10 +22,15 @@ class AddEmployeePage {
 
   async addEmployee(employee: EmployeeDetails) {
     await this.firstNameTextBox.fill(employee.firstName);
+    logger.info("Employee first name is filled");
     await this.middleNameTextBox.fill(employee.middleName);
+    logger.info("Employee middle name is filled");
     await this.lastNameTextBox.fill(employee.lastName);
+    logger.info("Employee last name is filled");
     await this.employeeNoTextBox.fill(employee.employeeId);
+    logger.info("Employee number is filled");
     await this.saveButton.click();
+    logger.info("Saved employee button is clicked");
   }
 }
 

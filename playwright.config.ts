@@ -19,7 +19,7 @@ export default defineConfig({
   use: {
     baseURL:
       "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
-    trace: "on-first-retry",
+    trace: "on",
   },
 
   projects: [

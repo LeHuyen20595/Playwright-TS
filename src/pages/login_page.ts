@@ -1,5 +1,6 @@
 import { expect } from "@playwright/test";
 import { Page } from "playwright";
+import logger from "../utils/logger_utils";
 
 class LoginPage {
   constructor(private readonly page: Page) {}
@@ -21,12 +22,16 @@ class LoginPage {
     ).toBeVisible({
       timeout: 20000,
     });
+    logger.info("Visited login page");
   }
 
   async login(username: string, password: string) {
     await this.usernameTextbox.fill(username);
+    logger.info("Username is filled");
     await this.passwordTextbox.fill(password);
+    logger.info("Password is filled");
     await this.loginButton.click();
+    logger.info("Login button is clicked");
   }
 }
 
