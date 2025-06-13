@@ -1,5 +1,6 @@
 name: Playwright Tests
 on:
+  workflow_dispatch:
   push:
     branches: [main, master]
   pull_request:
@@ -15,16 +16,21 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
-      - name: Create .env from environment
+      - name: Inject .env file based on ENV variable
         run: |
-          if [ "${{ vars.ENV }}" === "staging" ]; then
-            echo "${{ secrets.STAGING_ENV }}" > src/config/.env
-          elif [ "${{ vars.ENV }}" === "production" ]; then
-            echo "${{ secrets.PRODUCTION_ENV }}" > src/config/.env
+          echo "ENV: $ENV"
+          if [ "$ENV" = "staging" ]; then
+            echo "$STAGING_ENV" > src/config/.env
+          elif [ "$ENV" = "production" ]; then
+            echo "$PRODUCTION_ENV" > src/config/.env
           else
-            echo "Unknown ENV: ${{ vars.ENV }}"
+            echo "Unknown ENV: $ENV"
             exit 1
           fi
+        env:
+          ENV: ${{ vars.ENV }}
+          STAGING_ENV: ${{ secrets.STAGING_ENV }}
+          PRODUCTION_ENV: ${{ secrets.PRODUCTION_ENV || '' }}
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
