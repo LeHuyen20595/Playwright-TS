@@ -15,8 +15,16 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
-      - name: Create .env file
-        run: echo "${{ secrets.TEST_ENV }}" > src/config/.env
+      - name: Create .env from environment
+        run: |
+          if [ "${{ vars.ENV }}" === "staging" ]; then
+            echo "${{ secrets.STAGING_ENV }}" > src/config/.env
+          elif [ "${{ vars.ENV }}" === "production" ]; then
+            echo "${{ secrets.PRODUCTION_ENV }}" > src/config/.env
+          else
+            echo "Unknown ENV: ${{ vars.ENV }}"
+            exit 1
+          fi
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
