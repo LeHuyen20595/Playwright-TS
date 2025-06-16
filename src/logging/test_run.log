@@ -105,3 +105,23 @@
 2025-06-16T18:04:20+07:00 [info]: Left component Leave is clicked
 2025-06-16T18:04:22+07:00 [info]: Top component Leave List is clicked
 2025-06-16T18:04:22+07:00 [info]: Search leave test is completed
+2025-06-16T18:10:03+07:00 [info]: Username is filled
+2025-06-16T18:10:03+07:00 [info]: Password is filled
+2025-06-16T18:10:14+07:00 [info]: Login button is clicked
+2025-06-16T18:10:27+07:00 [info]: Left component Leave is clicked
+2025-06-16T18:10:32+07:00 [info]: Top component Leave List is clicked
+2025-06-16T18:10:34+07:00 [info]: Search leave test is completed
+2025-06-16T18:10:51+07:00 [info]: Username is filled
+2025-06-16T18:10:51+07:00 [info]: Password is filled
+2025-06-16T18:11:01+07:00 [info]: Login button is clicked
+2025-06-16T18:11:16+07:00 [info]: Left component Leave is clicked
+2025-06-16T18:11:17+07:00 [info]: Left component PIM is clicked
+2025-06-16T18:11:21+07:00 [info]: Top component Leave List is clicked
+2025-06-16T18:11:22+07:00 [info]: Top component Add Employee is clicked
+2025-06-16T18:11:24+07:00 [info]: Search leave test is completed
+2025-06-16T18:11:24+07:00 [info]: Employee first name is filled
+2025-06-16T18:11:24+07:00 [info]: Employee middle name is filled
+2025-06-16T18:11:24+07:00 [info]: Employee last name is filled
+2025-06-16T18:11:24+07:00 [info]: Employee number is filled
+2025-06-16T18:11:27+07:00 [info]: Saved employee button is clicked
+2025-06-16T18:11:32+07:00 [info]: Add employee test is completed

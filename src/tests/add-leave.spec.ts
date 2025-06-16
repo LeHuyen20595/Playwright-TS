@@ -4,7 +4,7 @@ import { getDateRangeForNoResultSearch } from "../testdata/data-generator";
 import logger from "../utils/logger-utils";
 import { LeavePage } from "../pages/leave-page";
 
-test.only("Seach leave", async ({ page }) => {
+test("Seach leave", async ({ page }) => {
   const homePage = new HomePage(page);
   const leavePage = new LeavePage(page);
   await homePage.goToDashboard();
