@@ -1,6 +1,7 @@
 import { expect } from "@playwright/test";
 import { Page } from "playwright";
-import logger from "../utils/logger_utils";
+import logger from "../utils/logger-utils";
+import Env from "../config/environment";
 
 class LoginPage {
   constructor(private readonly page: Page) {}
@@ -14,9 +15,11 @@ class LoginPage {
   private readonly loginButton = this.page.getByRole("button", {
     name: "Login",
   });
+  private readonly sidePanel = this.page.getByLabel("Sidepanel");
 
-  async visit() {
-    await this.page.goto("/");
+  async visit(baseUrlNeedToIndicated?: boolean) {
+    const url = baseUrlNeedToIndicated ? `${Env.BASE_URL}/web/index.php/auth/login` : '/web/index.php/auth/login';
+    await this.page.goto(url);
     await expect(
       this.page.getByRole("img", { name: "orangehrm-logo" })
     ).toBeVisible({

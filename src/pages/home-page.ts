@@ -1,6 +1,6 @@
 import { Page } from "playwright";
-import LeftMenuComponent from "./components/left_menu_component";
-import TopMenuComponent from "./components/top_menu_component";
+import LeftMenuComponent from "./components/left-menu-component";
+import TopMenuComponent from "./components/top-menu-component";
 
 class HomePage {
   /*
@@ -13,6 +13,10 @@ class HomePage {
   constructor(private readonly page: Page) {
     this.leftMenuComponent = new LeftMenuComponent(page);
     this.topMenuComponent = new TopMenuComponent(page);
+  }
+
+  async goToDashboard(){
+    await this.page.goto("/web/index.php/dashboard/index")
   }
 
   getLeftMenuComponent() {

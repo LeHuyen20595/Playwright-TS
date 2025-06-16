@@ -4,7 +4,7 @@ class LeftMenuComponent {
   constructor(private readonly page: Page) {}
 
   private readonly leftMenuItem = (menuItemName: string) =>
-    this.page.getByRole("link", { name: menuItemName });
+    this.page.getByRole("link", { name: menuItemName, exact: true });
 
   async selectLeftMenuItem(menuItemName: string) {
     await this.leftMenuItem(menuItemName).click();

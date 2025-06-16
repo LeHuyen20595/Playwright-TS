@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig } from "@playwright/test";
 import dotenv from "dotenv";
 
 if (!process.env.NODE_ENV) {
@@ -9,23 +9,26 @@ if (!process.env.NODE_ENV) {
   });
 }
 
+const baseURL = process.env.BASE_URL || 'https://opensource-demo.orangehrmlive.com';
+
 export default defineConfig({
   testDir: "./src/tests",
+  globalSetup: require.resolve('./src/tests/global-setup.ts'),
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
   use: {
-    baseURL:
-      "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    baseURL,
     trace: "on",
   },
 
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      use: { browserName: 'chromium', storageState: './src/config/auth/auth.json' },
+      
     },
   ],
 });

@@ -1,6 +1,6 @@
 import { Page } from "playwright";
-import { EmployeeDetails } from "../testdata/orange_hr_interface";
-import logger from "../utils/logger_utils";
+import { EmployeeDetails } from "../testdata/orange-hr-interface";
+import logger from "../utils/logger-utils";
 
 class AddEmployeePage {
   constructor(private readonly page: Page) {}

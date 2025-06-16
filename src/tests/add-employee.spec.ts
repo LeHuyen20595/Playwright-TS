@@ -1,17 +1,13 @@
 import { expect, test } from "@playwright/test";
-import Env from "../config/environment";
-import LoginPage from "../../src/pages/login_page";
-import HomePage from "../../src/pages/home_page";
-import AddEmployeePage from "../../src/pages/employee_page";
-import { getRandomEmployee } from "../../src/testdata/random_employee";
-import logger from "../utils/logger_utils";
+import HomePage from "../pages/home-page";
+import AddEmployeePage from "../pages/employee-page";
+import { getRandomEmployee } from "../testdata/data-generator";
+import logger from "../utils/logger-utils";
 
 test("Add employee", async ({ page }) => {
-  const loginPage = new LoginPage(page);
   const homePage = new HomePage(page);
+  await homePage.goToDashboard();
   const addEmployeePage = new AddEmployeePage(page);
-  await loginPage.visit();
-  await loginPage.login(Env.USERNAME, Env.PASSWORD);
   await homePage.getLeftMenuComponent().selectLeftMenuItem("PIM");
   logger.info("Left component PIM is clicked");
   await homePage.getTopMenuComponent().selectTopMenuItem("Add Employee");
