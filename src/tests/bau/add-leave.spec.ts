@@ -1,12 +1,9 @@
-import { expect, test } from "@playwright/test";
-import HomePage from "../pages/home-page";
-import { getDateRangeForNoResultSearch } from "../testdata/data-generator";
-import logger from "../utils/logger-utils";
-import { LeavePage } from "../pages/leave-page";
+import { expect } from "@playwright/test";
+import { getDateRangeForNoResultSearch } from "../../testdata/data-generator";
+import logger from "../../utils/logger-utils";
+import { test } from "../../fixture/customeFixture";
 
-test("Seach leave", async ({ page }) => {
-  const homePage = new HomePage(page);
-  const leavePage = new LeavePage(page);
+test("Seach leave", async ({ homePage, leavePage }) => {
   await homePage.goToDashboard();
   await homePage.getLeftMenuComponent().selectLeftMenuItem("Leave");
   logger.info("Left component Leave is clicked");
