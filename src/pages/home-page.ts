@@ -1,6 +1,6 @@
 import { Page } from "playwright";
-import LeftMenuComponent from "./components/left-menu-component";
-import TopMenuComponent from "./components/top-menu-component";
+import LeftMenuComponent from "./components/home-component.ts/left-menu-component";
+import TopMenuComponent from "./components/home-component.ts/top-menu-component";
 
 class HomePage {
   /*
