@@ -2,7 +2,7 @@ import { expect } from "@playwright/test";
 // import HomePage from "../pages/home-page";
 import { getRandomEmployee } from "../../testdata/data-generator";
 import logger from "../../utils/logger-utils";
-import { test } from "../../fixture/customeFixture";
+import { test } from "../../fixture/ui-fixture";
 
 test("Add employee", async ({ homePage, pimPage }) => {
   await homePage.goToDashboard();

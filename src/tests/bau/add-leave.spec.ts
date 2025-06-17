@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
 import { getDateRangeForNoResultSearch } from "../../testdata/data-generator";
 import logger from "../../utils/logger-utils";
-import { test } from "../../fixture/customeFixture";
+import { test } from "../../fixture/ui-fixture";
 
 test("Seach leave", async ({ homePage, leavePage }) => {
   await homePage.goToDashboard();
