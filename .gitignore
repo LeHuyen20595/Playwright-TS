@@ -7,3 +7,5 @@ node_modules/
 /playwright/.cache/
 /src/config/.env
 /src/config/auth/auth.json
+/src/logging/test_error.log
+/src/logging/test_run.log
