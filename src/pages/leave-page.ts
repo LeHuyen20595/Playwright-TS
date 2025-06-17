@@ -1,12 +1,12 @@
 import { Page } from "@playwright/test";
-import { LeaveDetails } from "../testdata/orange-hr-interface";
+import { LeaveDetails } from "../testdata/data-interface";
 
 export class LeavePage{
     constructor(private page: Page){
     }
 
-    private readonly fromDateTextBox = this.page.getByPlaceholder("yyyy-dd-mm").first();
-    private readonly toDateTextBox = this.page.getByPlaceholder("yyyy-dd-mm").last();
+    private readonly fromDateTextBox = this.page.getByPlaceholder("mm-dd-yyyy").first();
+    private readonly toDateTextBox = this.page.getByPlaceholder("mm-dd-yyyy").last();
     private readonly assignLeaveOption = this.page.getByRole('option', {name: 'Scheduled'});
     private readonly leaveTypeOption = this.page.getByRole('option', {name: 'CAN - Personal'});
     private readonly searchButton = this.page.getByRole('button', {name: 'Search'});

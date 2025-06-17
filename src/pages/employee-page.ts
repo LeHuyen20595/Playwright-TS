@@ -1,5 +1,5 @@
 import { Page } from "playwright";
-import { EmployeeDetails } from "../testdata/orange-hr-interface";
+import { EmployeeDetails } from "../testdata/data-interface";
 import logger from "../utils/logger-utils";
 
 class AddEmployeePage {

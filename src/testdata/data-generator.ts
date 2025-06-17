@@ -1,4 +1,4 @@
-import { EmployeeDetails, LeaveDetails, LeaveStatus, LeaveType } from "./orange-hr-interface";
+import { EmployeeDetails, LeaveDetails, LeaveStatus, LeaveType } from "./data-interface";
 import { faker } from "@faker-js/faker";
 
 export function getRandomEmployee(): EmployeeDetails {
@@ -12,8 +12,8 @@ export function getRandomEmployee(): EmployeeDetails {
 
 export function getDateRangeForNoResultSearch(): LeaveDetails{
   return {
-    fromDate: '2025-01-01',
-    toDate: '2025-02-02',
+    fromDate: '01-01-2025',
+    toDate: '02-02-2025',
     leaveStatus: LeaveStatus.PendingApproved,
     leaveType: LeaveType.Personal
   }

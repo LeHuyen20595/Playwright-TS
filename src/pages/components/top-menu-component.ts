@@ -7,7 +7,7 @@ class TopMenuComponent {
     this.page.getByRole("listitem").filter({ hasText: menuItemName });
 
   async selectTopMenuItem(menuItemName: string) {
-    await this.topMenuItem(menuItemName).click();
+    await this.topMenuItem(menuItemName).click({timeout: 60000});
   }
 }
 
